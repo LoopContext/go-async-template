@@ -1,0 +1,56 @@
+{
+  "name": "go-async-template",
+  "version": "0.0.12",
+  "description": "Template asyncapi/generator for Go",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run testTemplate && npm run testHooks && npm run testFilters",
+    "testTemplate": "rimraf test/temp && jest --coverage -t 'templateGenerationResult'",
+    "testHooks": "rimraf test/temp && jest --coverage -t 'generateExtraFormats'",
+    "testFilters": "rimraf test/temp && jest --coverage -t 'generateMermaidDiagram'",
+    "release": "semantic-release",
+    "get-version": "echo $npm_package_version",
+    "gen-readme-toc": "markdown-toc -i README.md",
+    "lint": "eslint --max-warnings 0 --fix --config .eslintrc ."
+  },
+  "authors": ["Aliaks Tarasevich", "Christian Melgarejo"],
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@asyncapi/generator-filters": "1.1.0",
+    "@asyncapi/generator-hooks": "0.1.0",
+    "puppeteer": "5.2.1"
+  },
+  "generator": {
+    "parameters": {
+      "package": {
+        "description": "Name of go package",
+        "default": "async"
+      }
+    },
+    "nonRenderableFiles": [],
+    "generator": ">=1.1.0 <2.0.0",
+    "filters": [
+      "@asyncapi/generator-filters"
+    ]
+  },
+  "devDependencies": {
+    "@asyncapi/generator": "1.6.0",
+    "@asyncapi/parser": "1.4.0",
+    "@semantic-release/commit-analyzer": "8.0.1",
+    "@semantic-release/github": "7.0.7",
+    "@semantic-release/npm": "7.0.5",
+    "@semantic-release/release-notes-generator": "9.0.1",
+    "all-contributors-cli": "6.19.0",
+    "conventional-changelog-conventionalcommits": "4.4.0",
+    "eslint": "7.7.0",
+    "eslint-plugin-jest": "23.20.0",
+    "eslint-plugin-react": "7.21.5",
+    "eslint-plugin-security": "1.4.0",
+    "eslint-plugin-sonarjs": "0.5.0",
+    "jest": "26.4.2",
+    "jest-esm-transformer": "1.0.0",
+    "markdown-toc": "1.2.0",
+    "rimraf": "3.0.2",
+    "semantic-release": "17.1.1"
+  }
+}
